@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Toy Details</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+        
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+        <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <script src="./buttons.js"></script>
+        <script src="./markerHandler.js"></script>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+        <!-- Local StyleSheet -->
+        <link rel="stylesheet" href="./style.css" type="text/css"/>
+    </head>
+
+    <body style="margin : 0px; overflow: hidden;">
+    
+        <a-scene 
+        embedded vr-mode-ui="enabled: false"     
+        arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;debugUIEnabled: false;"
+        gesture-detector create-buttons>   
+        
+            <!-- Camera -->
+            <a-entity camera></a-entity>  
+
+            <!-- A-Assets -->
+            <a-assets>
+                <a-asset-item id="spiderman" src="./models/spiderman_toy/scene.gltf"></a-asset-item>
+            </a-assets>
+
+            <!-- A-Marker -->
+            <a-marker marker-handler type="pattern" url="./assets/toy-markers/pattern-spiderman.patt" cursor="rayOrigin:mouse" id="spiderman-marker">
+                <a-entity id="spiderman-model" position="-1.3 0 1" rotation="-90 0 0" scale="0.3 0.3 0.3" gltf-model="#spiderman" gesture-handler></a-entity>     
+
+                <a-plane position="0 0 0" width="2" height="1.5" rotation="-90 0 0">
+
+                    <a-plane position="0 0.1 0.05" rotation="0 0 0" width="2" height="1" color="#f0c30f">
+                    
+                    
+                        <a-entity position="0 0 0.1" rotation="0 0 0" text="color:black; align:center; width:1.8; height:1; font:monoid"></a-entity>
+
+                    </a-plane>
+                    <a-entity position="0 0 0.1" rotation="0 0 0" text="color:black; align:center; width:2; font:monoid; value:Custom handmade and well detailed action figure of Spiderman™. The figure has moveable arms with smooth joints and a durable shell. 1 out of the 100 models manufactured in 2013."></a-entity>
+                </a-plane>
+            </a-marker>
+        </a-scene>
+
+        <!-- Button Main Div -->
+        <div id="button1"></div>
+    
+    </body>
+    
+</html>
